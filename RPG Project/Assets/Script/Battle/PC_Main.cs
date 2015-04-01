@@ -1,16 +1,17 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using Database;
 
 public class PC_Main : MonoBehaviour {
 
+	//Turn switch with bar
+	//attack cooldown
+	//one weapon, one armor, one accessory
+	//number lerps for damage
 	public string Name;
-	public int ID, HP, Target_type, Max_equips = 2;
-	[HideInInspector] public int cur_hp, damage, hit, index;
-	public int[] Stats;
-	[HideInInspector] public int[] cur_stats;
+	public int ID, HP, Target_type, Max_equips = 2, cur_hp, damage, hit, index;
+	public int[] Stats, cur_stats;//Stats: 0 = Str, 1 = Dex, 2 = Int, 3 = Agi, 4 = Luck
 	public float Speed, Rotation;
 	public bool Myturn;
 	public Transform target;
