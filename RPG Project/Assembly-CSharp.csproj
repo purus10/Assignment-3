@@ -50,7 +50,6 @@
      <Compile Include="Assets\Script\Battle\HUD.cs" />
      <Compile Include="Assets\Script\Battle\NPC_Main.cs" />
      <Compile Include="Assets\Script\Battle\PC_Main.cs" />
-     <Compile Include="Assets\Script\CustomMenu.cs" />
      <Compile Include="Assets\Script\Database.cs" />
      <Compile Include="Assets\Script\List.cs" />
      <Compile Include="Assets\Script\Menu.cs" />

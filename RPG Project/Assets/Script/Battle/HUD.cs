@@ -49,7 +49,7 @@ public class HUD : MonoBehaviour {
 			{
 				GUI.Label (abilities[i], "A"+(i+1)+": "+A_name(i),high_ability[i]);
 				GUI.Label(items[i], "S"+(i+1)+": "+I_name(i),high_item[i]);
-				if (i != 3) GUI.Label(stat[i], stats[i]+": "+character.Stats[i].ToString());
+				if (i != 3) GUI.Label(stat[i], stats[i]+": "+character.Stat[i].ToString());
 			}
 			GUI.Label(stat[3], stats[3]+": "+character.cur_hp.ToString());
 			if (character.target == null) GUI.Label(helpfuls[1],"Current Target:");

@@ -9,31 +9,34 @@ public class PC_Main : MonoBehaviour {
 	//attack cooldown
 	//one weapon, one armor, one accessory
 	//number lerps for damage
+	public static float Bar_max;
 	public string Name;
-	public int ID, HP, Target_type, Max_equips = 2, cur_hp, damage, hit, index;
-	public int[] Stats, cur_stats;//Stats: 0 = Str, 1 = Dex, 2 = Int, 3 = Agi, 4 = Luck
-	public float Speed, Rotation;
+	public int ID, HP, Str, Dex, Int, Agi, Luk, Exp, Target_type, cur_hp, damage, hit, index;
+	public int[] Stat;//Stats: 0 = Str, 1 = Dex, 2 = Int, 3 = Agi, 4 = Luck
+	public float Speed, Rotation, Bar_fill,Bar_Set;
 	public bool Myturn;
 	public Transform target;
 	public List <Transform> targets = new List<Transform>();
 	public List <Ability> abilities = new List<Ability>();
-	public Weapon[] wep = new Weapon[1];
-	public Accessory[] acc;
+	public Weapon wep;
+	public Armor arm;
+	public Accessory acc;
 	public Ability[] ability = new Ability[4];
 	public Item[] items = new Item[4];
 	public NavMeshAgent Agent;
 	public NPC_Main NPC;
 	public PC_Main PC;
 	Color target_off;
-	
+	public int Level
+	{
+		get {return Exp/200;}
+	}
+	public float waitbar
+	{
+		get {return Bar_max-Agi;}
+	}
 	void Start ()
 	{
-		Ability a = new Ability();
-		a.name = "Attack";
-		a.type = 1;
-		abilities.Add(a);
-		acc = new Accessory[Max_equips];
-		cur_stats = new int[Stats.Length];
 		DontDestroyOnLoad(gameObject);
 		SetStats();
 		//FirstWeapon();
@@ -47,6 +50,7 @@ public class PC_Main : MonoBehaviour {
 		TargetSetup();
 		CharacterMotion();
 		if (Input.GetKeyDown(KeyCode.Space)) EndTurn();
+
 	}
 	void CharacterMotion()
 	{
@@ -60,7 +64,7 @@ public class PC_Main : MonoBehaviour {
 				if (Input.GetKey(GameInformer.Right)) transform.Rotate(Vector3.up * Speed * Rotation * Time.deltaTime);
 				if (Input.GetKey(GameInformer.Down)) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
 			}
-		}else if(Myturn == true)
+		}else if(Myturn == true && GameInformer.target == transform)
 		{
 			for(int i = 0; i < GameInformer.A.Length;i++)
 			{
@@ -69,9 +73,14 @@ public class PC_Main : MonoBehaviour {
 				if (!Input.GetKey(GameInformer.ItemTog) && Input.GetKeyDown(GameInformer.A[i])) 
 					if (ability[i] != null) CastAbility(ability[i]);
 			}
+
 		}
 	}
-	
+	void BarFill()
+	{
+		if (GameInformer.battle == true) Bar_fill++;
+		if (Bar_fill == waitbar) Myturn = true;
+	}
 	void TargetSetup()
 	{
 		if (Input.GetKeyDown(KeyCode.Tab) && Target_type != 3) 
@@ -89,7 +98,6 @@ public class PC_Main : MonoBehaviour {
 		Agent.Resume();
 		if (GameInformer.target == transform && GameInformer.stop == false) 
 		{
-			Myturn = true;
 			GameInformer.stop = true;
 			GameInformer.battle = true;
 		}
@@ -194,7 +202,12 @@ public class PC_Main : MonoBehaviour {
 	{
 		name = Name;
 		cur_hp = HP;
-		for (int i = 0; i < Stats.Length;i++) cur_stats[i] = Stats[i];
+		Stat[0] = Str;
+		Stat[1] = Dex;
+		Stat[2] = Int;
+		Stat[3] = Agi;
+		Stat[4] = Luk;
+		Bar_max = Bar_Set;
 	}
 	
 	/*void FirstWeapon()

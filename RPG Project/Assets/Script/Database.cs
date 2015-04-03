@@ -129,5 +129,20 @@ namespace Database
 		public int price;
 		public int type;
 	}
+
+	public class Armor
+	{
+		public string name;
+		public string description;
+		public bool equipped;
+		
+		public int Defense;
+		public int Hit;
+		public int Brawns;
+		public int Tenacity;
+		public int Courage;
+		public int price;
+		public int type;
+	}
 	#endregion
 }

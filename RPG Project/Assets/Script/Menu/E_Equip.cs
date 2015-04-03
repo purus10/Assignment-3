@@ -83,23 +83,23 @@ public class E_Equip : MonoBehaviour {
 	}
 	#endregion
 	#region Equipping
-	void WepEquip(int s,int i)
+	void WepEquip(int i)
 	{
 		selected.DMGFont.normal.textColor = Color.white;
 		selected.HITFont.normal.textColor = Color.white;
-		equip.wep[s] = E_weapons[i];
+		equip.wep = E_weapons[i];
 		E_weapons.Clear();
 		weapons = false;
 		gearID = false;
 		//equip.Equip();
 	}
 	
-	void AccEquip(int s,int i)
+	void AccEquip(int i)
 	{
 		selected.BRWFont.normal.textColor = Color.white;
 		selected.TENFont.normal.textColor = Color.white;
 		selected.CRGFont.normal.textColor = Color.white;
-		equip.acc[s] = E_acc[i];
+		equip.acc = E_acc[i];
 		E_acc.Clear();
 		accessories = false;
 		gearID = false;
@@ -152,19 +152,19 @@ public class E_Equip : MonoBehaviour {
 		if (weapons) for (int i = 0; i < E_weapons.Count; i++)
 		{
 			GuiSetup(i);
-			if (GUI.Button(Button, E_weapons[i].name + maxdisplay(i))) WepEquip(magicnum,i);
+			if (GUI.Button(Button, E_weapons[i].name + maxdisplay(i))) WepEquip(i);
 			
 			if (Button.Contains(Event.current.mousePosition)) 
-				WepCompare(equip.wep[magicnum].damage,equip.wep[magicnum].hit,i);
+				WepCompare(equip.wep.damage,equip.wep.hit,i);
 		}
 		
 		if (accessories) for (int i = 0; i < E_acc.Count; i++)
 		{
 			GuiSetup(i);
-			if (GUI.Button(Button, E_acc[i].name)) AccEquip(magicnum,i);
+			if (GUI.Button(Button, E_acc[i].name)) AccEquip(i);
 			
 			if (Button.Contains(Event.current.mousePosition)) 
-				AccCompare(equip.acc[magicnum].Brawns,equip.acc[magicnum].Tenacity,equip.acc[magicnum].Courage,i);
+				AccCompare(equip.acc.Brawns,equip.acc.Tenacity,equip.acc.Courage,i);
 		}
 		
 		if (blessings) for (int i = 0; i < E_abilities.Count; i++)
