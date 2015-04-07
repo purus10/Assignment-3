@@ -10,6 +10,7 @@ public class PC_Main : MonoBehaviour {
 	//one weapon, one armor, one accessory
 	//number lerps for damage
 	public static float Bar_max;
+	public static int Ticket;
 	public string Name;
 	public int ID, HP, Str, Dex, Int, Agi, Luk, Exp, Target_type, cur_hp, damage, hit, index;
 	public int[] Stat;//Stats: 0 = Str, 1 = Dex, 2 = Int, 3 = Agi, 4 = Luck

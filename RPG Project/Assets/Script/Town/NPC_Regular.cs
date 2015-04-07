@@ -5,7 +5,8 @@ public class NPC_Regular : MonoBehaviour {
 
 	public Rect dialog_box, selection_box, acc_button, wep_button, quit_button;
 	public string comment;
-	public int choice = 0;
+	public bool Choices;
+	int choice = 0;
 	public GameObject menu;
 	PC_Main p;
 	
@@ -31,11 +32,10 @@ public class NPC_Regular : MonoBehaviour {
 	{
 		if (choice == 1)
 		{
-			if (Input.GetKeyDown(GameInformer.Select)) choice = 2;
 			GUI.Box(dialog_box,comment);
-
+			if (Input.GetKeyDown(GameInformer.Select) && Choices == true) choice = 2;
+			else if (Input.GetKeyDown(GameInformer.Select)) choice = 0;
 		}
-		
 		if (choice == 2)
 		{
 			UnityEngine.Cursor.visible = true;
@@ -47,6 +47,5 @@ public class NPC_Regular : MonoBehaviour {
 				UnityEngine.Cursor.visible = false;
 			}
 		}
-		
 	}
 }

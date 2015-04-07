@@ -46,11 +46,11 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Battle\GameInformer.cs" />
      <Compile Include="Assets\Script\Battle\HUD.cs" />
      <Compile Include="Assets\Script\Battle\NPC_Main.cs" />
      <Compile Include="Assets\Script\Battle\PC_Main.cs" />
      <Compile Include="Assets\Script\Database.cs" />
+     <Compile Include="Assets\Script\GameInformer.cs" />
      <Compile Include="Assets\Script\List.cs" />
      <Compile Include="Assets\Script\Menu.cs" />
      <Compile Include="Assets\Script\Menu\E_Equip.cs" />
@@ -58,7 +58,8 @@
      <Compile Include="Assets\Script\Menu\E_Item.cs" />
      <Compile Include="Assets\Script\Menu\E_Status.cs" />
      <Compile Include="Assets\Script\Town\House.cs" />
-     <Compile Include="Assets\Script\Town\Inn.cs" />
+     <Compile Include="Assets\Script\Town\Inn\Ticket_Dispenser.cs" />
+     <Compile Include="Assets\Script\Town\Inn\Treatment.cs" />
      <Compile Include="Assets\Script\Town\NPC_Regular.cs" />
      <Compile Include="Assets\Script\Town\Shop.cs" />
      <Compile Include="Assets\Script\Treasure.cs" />
