@@ -12,6 +12,7 @@ public class PC_Main : MonoBehaviour {
 	public static float Bar_max;
 	public static int Ticket;
 	public string Name;
+	public string[] FrogeNames;
 	public int ID, HP, Str, Dex, Int, Agi, Luk, Exp, Target_type, cur_hp, damage, hit, index;
 	public int[] Stat;//Stats: 0 = Str, 1 = Dex, 2 = Int, 3 = Agi, 4 = Luck
 	public float Speed, Rotation, Bar_fill,Bar_Set;
@@ -58,7 +59,6 @@ public class PC_Main : MonoBehaviour {
 		TargetSetup();
 		CharacterMotion();
 		if (Input.GetKeyDown(KeyCode.Space)) EndTurn();
-
 	}
 	void CharacterMotion()
 	{

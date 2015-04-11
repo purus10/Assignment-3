@@ -106,9 +106,7 @@ public class CustomMenu : Editor {
 		EditorGUILayout.EndHorizontal();
 		EditorGUILayout.LabelField("");
 		if (mypcmain.ID == 1) EditorGUILayout.LabelField("Mask: ", ItName(2));
-
-
-
-
+		if (mypcmain.ID == 2) EditorGUILayout.PropertyField(serializedObject.FindProperty("FrogeNames"),true);
+		serializedObject.ApplyModifiedProperties();
 	}
 }

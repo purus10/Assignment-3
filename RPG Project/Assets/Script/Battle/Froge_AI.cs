@@ -10,11 +10,11 @@ public class Froge_AI : MonoBehaviour {
 		if (AI.turn != 0)
 		{
 			if(AI.turn == 1) print ("Moo");
-			if (AI.turn == 2)
+			if (AI.turn > 1 && AI.turn < 5)
 			{
-				AI.main.Target_type = AI.main.ability[0].type;
+				AI.main.Target_type = AI.main.ability[AI.turn-2].type;
 				AI.main.Target();
-				AI.main.CastAbility(AI.main.ability[0]);
+				AI.main.CastAbility(AI.main.ability[AI.turn-2]);
 			}
 		 //Add functions here
 			AI.turn = 0;
