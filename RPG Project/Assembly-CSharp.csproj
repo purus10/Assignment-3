@@ -46,8 +46,10 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Script\Battle\Froge_AI.cs" />
      <Compile Include="Assets\Script\Battle\HUD.cs" />
      <Compile Include="Assets\Script\Battle\NPC_Main.cs" />
+     <Compile Include="Assets\Script\Battle\PC_AI.cs" />
      <Compile Include="Assets\Script\Battle\PC_Main.cs" />
      <Compile Include="Assets\Script\Database.cs" />
      <Compile Include="Assets\Script\GameInformer.cs" />

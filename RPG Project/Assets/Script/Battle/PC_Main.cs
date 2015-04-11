@@ -38,6 +38,10 @@ public class PC_Main : MonoBehaviour {
 	}
 	void Start ()
 	{
+		Ability a = new Ability();
+		a.name = "Attack";
+		a.type = 1;
+		abilities.Add(a);
 		DontDestroyOnLoad(gameObject);
 		SetStats();
 		//FirstWeapon();
@@ -47,7 +51,10 @@ public class PC_Main : MonoBehaviour {
 	{
 		SetAttack();
 		NPCMotions();
+		if (GameInformer.battle == false)
+		{
 		if (Input.GetKeyDown(GameInformer.Fight)) BattleSetup();
+		}else BarFill();
 		TargetSetup();
 		CharacterMotion();
 		if (Input.GetKeyDown(KeyCode.Space)) EndTurn();
@@ -79,7 +86,7 @@ public class PC_Main : MonoBehaviour {
 	}
 	void BarFill()
 	{
-		if (GameInformer.battle == true) Bar_fill++;
+		if (Myturn == false && Bar_fill != waitbar) Bar_fill++;
 		if (Bar_fill == waitbar) Myturn = true;
 	}
 	void TargetSetup()
@@ -93,7 +100,6 @@ public class PC_Main : MonoBehaviour {
 			}
 		}
 	}
-	
 	public void BattleSetup()
 	{
 		Agent.Resume();
@@ -103,7 +109,6 @@ public class PC_Main : MonoBehaviour {
 			GameInformer.battle = true;
 		}
 	}
-	
 	void SetAttack()
 	{
 		foreach (Ability a in abilities) 
@@ -122,16 +127,18 @@ public class PC_Main : MonoBehaviour {
 			Agent.stoppingDistance = 1.5f;
 			Agent.SetDestination(GameInformer.target.position);
 		}
-		if (GameInformer.target == transform && GameInformer.battle == true) Myturn = true;
 	}
 
-	void CastAbility(Ability a)
+	public void CastAbility(Ability a)
 	{
 		Agent.stoppingDistance = 1.5f;
+		if (ID == 0)
+		{
 		foreach (Transform tar in targets)
 		{
 			if (tar.GetComponent<PC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<PC_Main>().target_off;
 			if (tar.GetComponent<NPC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
+		}
 		}
 		if (Target_type != a.type) 
 		{
@@ -191,14 +198,17 @@ public class PC_Main : MonoBehaviour {
 	public void EndTurn()
 	{
 		Myturn = false;
+		Bar_fill = 0;
 		GameInformer.idler = (GameInformer.idler +1) % 8;
+		if (ID == 0)
+		{
 		foreach (Transform n in targets)
 		{
 			if (n.GetComponent<PC_Main>() != null) n.GetComponentInChildren<Renderer>().material.color = n.GetComponent<PC_Main>().target_off;
 			if (n.GetComponent<NPC_Main>() != null) n.GetComponentInChildren<Renderer>().material.color = n.GetComponent<NPC_Main>().target_off;
 		}
+		}
 	}
-	
 	void SetStats()
 	{
 		name = Name;
@@ -256,7 +266,7 @@ public class PC_Main : MonoBehaviour {
 		}
 	}*/
 	
-	void Target()
+	public void Target()
 	{
 		if (Target_type == 1) 
 		{
@@ -267,7 +277,6 @@ public class PC_Main : MonoBehaviour {
 			PC_Main[] search = GameObject.FindObjectsOfType(typeof(PC_Main)) as PC_Main[];
 			foreach (PC_Main n in search) targets.Add(n.transform);
 		} else if (Target_type == 3) target = transform;
-		
 		if (target == null)
 		{
 			targets.Sort(delegate(Transform t1, Transform t2) { 
@@ -278,18 +287,20 @@ public class PC_Main : MonoBehaviour {
 				GetComponentInChildren<Renderer>().material.color = Color.blue;
 			}
 			transform.LookAt(target);
-		}
-		else if (targets.Count > 1) 
+		} else if (targets.Count > 1) 
 		{
 			index = (index+1) % targets.Count;
 			target = targets[index];
 			if (Target_type != 0)  transform.LookAt(target);
 		}
+		if (ID == 0)
+		{
 		foreach (Transform tar in targets) if (tar == target)
 			tar.GetComponentInChildren<Renderer>().material.color = Color.blue;
 		else {
 			if (tar.GetComponent<PC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<PC_Main>().target_off;
 			if (tar.GetComponent<NPC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
+		}
 		}
 	}
 }

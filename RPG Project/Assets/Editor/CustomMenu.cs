@@ -7,11 +7,6 @@ using System.Collections;
 public class CustomMenu : Editor {
 	PC_Main mypcmain;
 	Rect stat;
-
-	void OnEnable()
-	{
-		mypcmain = (PC_Main) target;
-	}
 	string WepName()
 	{
 		if (mypcmain.wep != null) return mypcmain.wep.name;
@@ -46,6 +41,10 @@ public class CustomMenu : Editor {
 	{
 		if (mypcmain.wep != null) return mypcmain.wep.hit;
 		else return 0;
+	}
+	void OnEnable()
+	{
+		mypcmain = (PC_Main) target;
 	}
 	public override void OnInspectorGUI()
 	{

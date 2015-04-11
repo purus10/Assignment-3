@@ -9,7 +9,7 @@ namespace Database
 	{ 
 		public string name, description;
 		public bool equipped, far_range;
-		public float max_range, min_range;
+		public float max_range, min_range,cooldown;
 		public int type,ID;
 		int dmg;
 		
@@ -69,6 +69,7 @@ namespace Database
 				t.cur_hp -= dmg;
 				HUD.info = t.Name + " Remaining HP: "+t.cur_hp;
 			}
+			my.EndTurn();
 		}
 	}
 	#endregion
