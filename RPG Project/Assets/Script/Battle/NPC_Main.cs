@@ -41,27 +41,14 @@ public class NPC_Main : MonoBehaviour {
 	
 	void Awake ()
 	{
-		//SetStats();
-		target_off = GetComponentInChildren<Renderer>().material.color;
+		SetStats();
+		target_off = GetComponent<SpriteRenderer>().color;
 		agent = GetComponent<NavMeshAgent>();
 	}
 	
-	/*void Update()
+	void Update()
 	{
 		if (cur_hp <= 0) Destroy(gameObject);
-		if (kadabra == true)
-		{
-			float time = 0;
-			time++;
-			if (time == kadabra_timer) kadabra = false;
-		}
-	}
-	
-	void FixedUpdate () 
-	{
-		if (tier_count <= Tier_Limit[0]) Tier(1,Tier_Limit[0]);
-		else if (tier_count >= Tier_Limit[1]) Tier(2,Tier_Limit[1]);
-		else if (tier_count >= Tier_Limit[2]) Tier(3,Tier_Limit[2]);
 	}
 	
 	void SetStats()
@@ -72,23 +59,6 @@ public class NPC_Main : MonoBehaviour {
 		stats[0] = Brawns;
 		stats[1] = Tenacity;
 		stats[2] = Courage;
-	}
-	
-	void Tier(int t, float limit)
-	{
-		if (tier_count < limit) tier_count = limit;
-		if (tier != t)
-		{
-			tier = t;
-			if (tier == 1) for (int i = 0; i < stats.Length;i++) stats[i] = stats[i]/2 - (Courage/10);
-			if (tier == 3) for (int i = 0; i < stats.Length;i++) stats[i] = stats[i]*(Courage/10 + (tier -1));
-			if (tier == 2)
-			{
-				stats[0] = Brawns;
-				stats[1] = Tenacity;
-				stats[2] = Courage;
-			}
-		}
 	}
 	
 	public void TargetType(int type)
@@ -120,5 +90,5 @@ public class NPC_Main : MonoBehaviour {
 				}
 			}
 		}
-	}*/
+	}
 }
