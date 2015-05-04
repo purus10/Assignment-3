@@ -10,12 +10,14 @@ public class GameInformer : MonoBehaviour {
 	static public Transform target;
 	public GameObject[] Character;
 	public Vector3[] position;
+	public Quaternion[] Rotation;
 	static public string previous;
 	
 	void Awake()
 	{
 		UnityEngine.Cursor.visible = false;
-		CreateCharacter();
+		if (target == null) CreateCharacter();
+		else TransferPlace();
 		previous = Application.loadedLevelName;
 		Up = KeyCode.W;
 		Down = KeyCode.S;
@@ -35,7 +37,12 @@ public class GameInformer : MonoBehaviour {
 	void CreateCharacter()
 	{
 		for(int i = 0; i < Character.Length;i++)
-			Instantiate (Character[i], position[i],Quaternion.identity);
+			Instantiate (Character[i], position[i],Rotation[i]);
+	}
+
+	void TransferPlace()
+	{
+		Character[0].transform.position = MapTransition.placement;
 	}
 
 	void FixedUpdate()

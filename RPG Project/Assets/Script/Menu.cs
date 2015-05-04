@@ -15,7 +15,7 @@ public class Menu : MonoBehaviour {
 		for (int i = 0;i < search.Length;i++) chara.Add(search[i]);
 		foreach(PC_Main c in chara)
 		{
-			c.gameObject.GetComponentInChildren<MeshRenderer>().enabled = true;
+			if (c.Name != "Frog")c.gameObject.GetComponent<SpriteRenderer>().enabled = true;
 			GameInformer.stop = false;
 		}
 	}

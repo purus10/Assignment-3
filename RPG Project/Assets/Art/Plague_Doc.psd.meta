@@ -1,9 +1,21 @@
 fileFormatVersion: 2
 guid: 51322ae9c47e61846b59330d9ce1f38c
-timeCreated: 1430740753
-licenseType: Pro
+timeCreated: 1430770823
+licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: Plague_Doc_0
+    21300002: Plague_Doc_1
+    21300004: Plague_Doc_2
+    21300006: Plague_Doc_3
+    21300008: Plague_Doc_4
+    21300010: Plague_Doc_5
+    21300012: Plague_Doc_6
+    21300014: Plague_Doc_7
+    21300016: Plague_Doc_8
+    21300018: Plague_Doc_9
+    21300020: Plague_Doc_10
+    21300022: Plague_Doc_11
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -26,18 +38,18 @@ TextureImporter:
   cubemapConvolutionSteps: 8
   cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
-  textureFormat: -1
+  textureFormat: -3
   maxTextureSize: 2048
   textureSettings:
-    filterMode: -1
-    aniso: -1
+    filterMode: 2
+    aniso: 16
     mipBias: -1
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -48,7 +60,127 @@ TextureImporter:
   textureType: 8
   buildTargetSettings: []
   spriteSheet:
-    sprites: []
+    sprites:
+    - name: Plague_Doc_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_1
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_2
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 81
+        width: 41
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_3
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_4
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_5
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_6
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 68
+        width: 41
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_7
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 80
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_8
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 23
+        width: 41
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_9
+      rect:
+        serializedVersion: 2
+        x: 56
+        y: 23
+        width: 52
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_10
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 23
+        width: 35
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: Plague_Doc_11
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 23
+        width: 54
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
   assetBundleName: 

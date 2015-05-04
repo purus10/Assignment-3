@@ -2,7 +2,7 @@
 using UnityEditor;
 using System.Collections;
 
-[CustomEditor(typeof(PC_Main))]
+/*[CustomEditor(typeof(PC_Main))]
 [CanEditMultipleObjects]
 public class CustomMenu : Editor {
 	PC_Main mypcmain;
@@ -109,4 +109,4 @@ public class CustomMenu : Editor {
 		if (mypcmain.ID == 2) EditorGUILayout.PropertyField(serializedObject.FindProperty("FrogeNames"),true);
 		serializedObject.ApplyModifiedProperties();
 	}
-}
+}*/

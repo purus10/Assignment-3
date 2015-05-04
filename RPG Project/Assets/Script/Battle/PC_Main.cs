@@ -46,15 +46,16 @@ public class PC_Main : MonoBehaviour {
 		DontDestroyOnLoad(gameObject);
 		SetStats();
 		//FirstWeapon();
-		target_off = GetComponentInChildren<Renderer>().material.color;
+		target_off = GetComponent<SpriteRenderer>().material.color;
 	}
 	void Update()
 	{
 		SetAttack();
 		NPCMotions();
+
 		if (GameInformer.battle == false)
 		{
-		if (Input.GetKeyDown(GameInformer.Fight)) BattleSetup();
+		if (Application.loadedLevelName == "Battle") BattleSetup();
 		}else BarFill();
 		TargetSetup();
 		CharacterMotion();
@@ -66,11 +67,20 @@ public class PC_Main : MonoBehaviour {
 		{
 			if (GameInformer.target == transform)
 			{
+				if (Application.loadedLevelName == "Feature Test")
+				{
 				Agent.Stop();
-				if (Input.GetKey(GameInformer.Up)) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Left)) transform.Rotate(Vector3.down * Speed * Rotation * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Right)) transform.Rotate(Vector3.up * Speed * Rotation * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Down)) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
+				if (Input.GetKey(GameInformer.Up)) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
+				if (Input.GetKey(GameInformer.Left)) transform.Translate(-Vector3.left * Speed * Time.deltaTime);
+				if (Input.GetKey(GameInformer.Right)) transform.Translate(Vector3.left * Speed * Time.deltaTime);
+				if (Input.GetKey(GameInformer.Down)) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+				} else {
+					Agent.Stop();
+					if (Input.GetKey(GameInformer.Up)) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+					if (Input.GetKey(GameInformer.Left)) transform.Rotate(Vector3.down * Speed * 34 * Time.deltaTime);
+					if (Input.GetKey(GameInformer.Right)) transform.Rotate(Vector3.up * Speed * 34 * Time.deltaTime);
+					if (Input.GetKey(GameInformer.Down)) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
+				}
 			}
 		}else if(Myturn == true && GameInformer.target == transform)
 		{
@@ -136,8 +146,8 @@ public class PC_Main : MonoBehaviour {
 		{
 		foreach (Transform tar in targets)
 		{
-			if (tar.GetComponent<PC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<PC_Main>().target_off;
-			if (tar.GetComponent<NPC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
+				if (tar.GetComponent<PC_Main>() != null) tar.GetComponent<SpriteRenderer>().material.color = tar.GetComponent<PC_Main>().target_off;
+				if (tar.GetComponent<NPC_Main>() != null) tar.GetComponent<SpriteRenderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
 		}
 		}
 		if (Target_type != a.type) 
@@ -204,8 +214,8 @@ public class PC_Main : MonoBehaviour {
 		{
 		foreach (Transform n in targets)
 		{
-			if (n.GetComponent<PC_Main>() != null) n.GetComponentInChildren<Renderer>().material.color = n.GetComponent<PC_Main>().target_off;
-			if (n.GetComponent<NPC_Main>() != null) n.GetComponentInChildren<Renderer>().material.color = n.GetComponent<NPC_Main>().target_off;
+				if (n.GetComponent<PC_Main>() != null) n.GetComponent<SpriteRenderer>().material.color = n.GetComponent<PC_Main>().target_off;
+				if (n.GetComponent<NPC_Main>() != null) n.GetComponent<SpriteRenderer>().material.color = n.GetComponent<NPC_Main>().target_off;
 		}
 		}
 	}
@@ -284,7 +294,7 @@ public class PC_Main : MonoBehaviour {
 			if (Target_type != 2 )target = targets[0];
 			else {
 				target = transform;
-				GetComponentInChildren<Renderer>().material.color = Color.blue;
+				GetComponent<SpriteRenderer>().material.color = Color.blue;
 			}
 			transform.LookAt(target);
 		} else if (targets.Count > 1) 
@@ -296,10 +306,10 @@ public class PC_Main : MonoBehaviour {
 		if (ID == 0)
 		{
 		foreach (Transform tar in targets) if (tar == target)
-			tar.GetComponentInChildren<Renderer>().material.color = Color.blue;
+				tar.GetComponent<SpriteRenderer>().material.color = Color.blue;
 		else {
-			if (tar.GetComponent<PC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<PC_Main>().target_off;
-			if (tar.GetComponent<NPC_Main>() != null) tar.GetComponentInChildren<Renderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
+				if (tar.GetComponent<PC_Main>() != null) tar.GetComponent<SpriteRenderer>().material.color = tar.GetComponent<PC_Main>().target_off;
+				if (tar.GetComponent<NPC_Main>() != null) tar.GetComponent<SpriteRenderer>().material.color = tar.GetComponent<NPC_Main>().target_off;
 		}
 		}
 	}
