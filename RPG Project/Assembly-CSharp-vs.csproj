@@ -61,6 +61,7 @@
      <Compile Include="Assets\Script\Menu\E_Item.cs" />
      <Compile Include="Assets\Script\Menu\E_Status.cs" />
      <Compile Include="Assets\Script\Music.cs" />
+     <Compile Include="Assets\Script\PC_Animator.cs" />
      <Compile Include="Assets\Script\Town\House.cs" />
      <Compile Include="Assets\Script\Town\Inn\Ticket_Dispenser.cs" />
      <Compile Include="Assets\Script\Town\Inn\Treatment.cs" />

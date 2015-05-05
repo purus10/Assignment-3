@@ -52,7 +52,7 @@ public class PC_Main : MonoBehaviour {
 	{
 		SetAttack();
 		NPCMotions();
-
+		transform.rotation = new Quaternion(0,transform.rotation.y,0,0);
 		if (GameInformer.battle == false)
 		{
 		if (Application.loadedLevelName == "Battle") BattleSetup();
@@ -70,10 +70,27 @@ public class PC_Main : MonoBehaviour {
 				if (Application.loadedLevelName == "Feature Test")
 				{
 				Agent.Stop();
-				if (Input.GetKey(GameInformer.Up)) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Left)) transform.Translate(-Vector3.left * Speed * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Right)) transform.Translate(Vector3.left * Speed * Time.deltaTime);
-				if (Input.GetKey(GameInformer.Down)) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+					if (Input.GetKey(GameInformer.Up))
+					{
+						if (transform.rotation.y > 0) transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
+						else transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+					}
+
+				if (Input.GetKey(GameInformer.Left)) 
+					{
+						transform.Translate(-Vector3.left * Speed * Time.deltaTime);
+						transform.rotation = new Quaternion(transform.rotation.x,180,transform.rotation.z,0);
+					}
+				if (Input.GetKey(GameInformer.Right)) 
+					{
+						transform.Translate(-Vector3.left * Speed * Time.deltaTime);
+						transform.rotation = new Quaternion(transform.rotation.x,0,transform.rotation.z,0);
+					}
+				if (Input.GetKey(GameInformer.Down))
+					{
+						if (transform.rotation.y > 0) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
+						else transform.Translate(-Vector3.forward * Speed * Time.deltaTime);
+					}
 				} else {
 					Agent.Stop();
 					if (Input.GetKey(GameInformer.Up)) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
@@ -169,7 +186,10 @@ public class PC_Main : MonoBehaviour {
 					Agent.SetDestination(target.position);
 					NPC = target.GetComponent<NPC_Main>();
 					StartCoroutine(CloseGap(a));
-				} else if (distance <= 2f) a.OpposeCast(this,NPC);
+				} else if (distance <= 2f) 
+				{
+					a.OpposeCast(this,NPC);
+				}
 			}
 			if (Target_type == 2) 
 			{
@@ -185,6 +205,7 @@ public class PC_Main : MonoBehaviour {
 		{
 			if (Vector3.Distance(transform.position, target.position) <= Agent.stoppingDistance + 0.5f)
 			{
+				if (ID == 1) PC_Animator.move = true;
 				a.OpposeCast(this,NPC);
 				break;
 			}

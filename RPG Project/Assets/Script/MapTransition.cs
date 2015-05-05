@@ -9,7 +9,6 @@ public class MapTransition : MonoBehaviour {
 
 	void OnTriggerEnter(Collider col)
 	{
-		print ("yes");
 		PC_Main p = col.GetComponent<PC_Main>();
 
 		if (p != null) Application.LoadLevel(Level_Name);

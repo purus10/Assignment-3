@@ -44,6 +44,8 @@ namespace Database
 		
 		public void OpposeCast(PC_Main my, NPC_Main t)
 		{
+			if (my.ID == 1) PC_Animator.attack = true;
+			if (my.ID == 1) PC_Animator.move = false;
 			if (far_range == true) 
 			{
 				float distance = Vector3.Distance(my.transform.position, t.transform.position);
@@ -69,7 +71,42 @@ namespace Database
 				t.cur_hp -= dmg;
 				HUD.info = t.Name + " Remaining HP: "+t.cur_hp;
 			}
-			my.EndTurn();
+		}
+
+		void Stick (PC_Main my, NPC_Main t, int str, int luk)
+		{
+			dmg = (my.damage +(str+2) + (luk+1) * (int) Random.Range(1,1.125f));
+			if (dmg > 0) 
+			{
+				t.cur_hp -= dmg;
+				Debug.Log( t.Name + " Remaining HP: "+t.cur_hp);
+			}
+		}
+		void GunShotBeak (NPC_Main t, int str, int dex, int luk)
+		{
+			dmg = ((str+4)+(dex+2)+(luk+2) * (int) Random.Range(1,1.125f));
+			if (dmg > 0) 
+			{
+				t.cur_hp -= dmg;
+				Debug.Log( t.Name + " Remaining HP: "+t.cur_hp);
+			}
+		}
+		public void PlaceboCure(PC_Main my, PC_Main t, int luk)
+		{
+			int heal = (luk+4 * (int) Random.Range(1,1.125f));
+			if (heal < t.HP ) t.cur_hp += heal;
+			else t.cur_hp = t.HP;
+			Debug.Log( t.Name + " Remaining HP: "+t.cur_hp);
+		}
+		public void FlaskThrow (PC_Main my, PC_Main t, int str, int dex, int luk)
+		{
+			dmg = ((str+1)+(dex+3)+(luk+2) * (int) Random.Range(1,1.125f));
+			if (dmg > 0) 
+			{
+				t.cur_hp -= dmg;
+				//Status Effects;
+				Debug.Log( t.Name + " Remaining HP: "+t.cur_hp);
+			}
 		}
 	}
 	#endregion
