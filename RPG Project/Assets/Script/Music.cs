@@ -12,14 +12,38 @@ public class Music : MonoBehaviour
 	// Use this for initialization
 	void Awake () 
     {
-        Musical.Play();
-        Musical.volume = 0.5f;
+        DontDestroyOnLoad(transform.gameObject);
+        OnLevelWasLoaded(0);
 	}
 	
 	// Update is called once per frame
 	void Update () 
     {
-        Musical.Play();
-        Musical.volume = 0.5f;
+
 	}
+
+    void OnLevelWasLoaded(int level)
+    {
+        if (level == 2)
+        {
+            Ambi2.Stop();
+            Musical.Stop();
+            Bettle.Play();
+            Bettle.volume = 0.5f;
+        }
+        if (level == 1)
+        {
+            Ambi2.Stop();
+            Bettle.Stop();
+            Musical.Play();
+            Musical.volume = 0.5f;
+        }
+        if (level == 0)
+        {
+            Musical.Stop();
+            Bettle.Stop();
+            Ambi2.Play();
+            Ambi2.volume = 0.5f;
+        }
+    }
 }
