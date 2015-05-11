@@ -6,8 +6,11 @@ public class Ticket_Dispenser : MonoBehaviour {
 	static public bool ticket = false;
 	static public int nowserving_number;
 	public int Default_min, Default_max,NowServing_Timer, Battle_Increase, Walk_Increase, Talk_Increase;
+	public Rect dialog_box;
 	public TextMesh Default_Display;
-	int t,m;
+	static public AudioClip timer;
+	public AudioClip audio;
+	int t,m, choice;
 	int default_number()
 	{
 		return PC_Main.Ticket + Random.Range(Default_min,Default_max);
@@ -15,6 +18,11 @@ public class Ticket_Dispenser : MonoBehaviour {
 	int ticket_number()
 	{
 		return Random.Range(nowserving_number,Default_max);
+	}
+
+	void Start()
+	{
+		timer = audio;
 	}
 
 	void FixedUpdate()
@@ -25,11 +33,10 @@ public class Ticket_Dispenser : MonoBehaviour {
 	void OnTriggerStay()
 	{
 		if (ticket == false)
-			if (Input.GetKeyDown(GameInformer.Select)) 
 		{
 			PC_Main.Ticket = ticket_number();
 			ticket = true;
-			Debug.Log (PC_Main.Ticket);
+			choice = 1;
 		}
 	}
 	void DisplayServing()
@@ -41,10 +48,19 @@ public class Ticket_Dispenser : MonoBehaviour {
 			t = 0;
 		}
 		Default_Display.text = nowserving_number.ToString();
-		if (nowserving_number == PC_Main.Ticket) Beep ();
 	}
-	void Beep()
+	static public void Beep(PC_Main p)
 	{
-		Debug.Log("IT IS YOUR TURN PLEASE RETURN ASAP FOR TREATMENT");
+		p.GetComponent<AudioSource>().PlayOneShot(timer);
+	}
+
+	void OnGUI()
+	{
+		if (choice == 1) GUI.Box(dialog_box,"Your ticket is "+PC_Main.Ticket.ToString());
+	}
+	
+	void OnTriggerExit()
+	{
+		if (choice != 0) choice = 0;
 	}
 }

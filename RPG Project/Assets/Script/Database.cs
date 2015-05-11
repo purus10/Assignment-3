@@ -23,8 +23,8 @@ namespace Database
 		
 		bool CloseRangeHit(PC_Main my, NPC_Main t)
 		{
-			int my_hit = Random.Range (0,100);
-			int t_dodge = Random.Range (0,100);
+			int my_hit = Random.Range (1,10);
+			int t_dodge = Random.Range (1,5);
 			return my_hit > t_dodge;
 		}
 		

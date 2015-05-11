@@ -1,18 +1,20 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\PC_Animator.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Script\Treasure.cs">
     <Files>
-      <File FileName="Assets\Script\Battle\PC_Main.cs" Line="231" Column="18" />
+      <File FileName="Assets\Script\Battle\PC_Main.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Battle\PC_AI.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Battle\Froge_AI.cs" Line="1" Column="1" />
       <File FileName="Assets\Editor\CustomMenu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\Battle\HUD.cs" Line="27" Column="2" />
-      <File FileName="Assets\Script\Database.cs" Line="47" Column="46" />
-      <File FileName="Assets\Script\GameInformer.cs" Line="12" Column="28" />
+      <File FileName="Assets\Script\Battle\HUD.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Database.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\GameInformer.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Menu.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\MapTransition.cs" Line="11" Column="3" />
+      <File FileName="Assets\Script\MapTransition.cs" Line="1" Column="1" />
       <File FileName="Assets\Script\Battle\NPC_Main.cs" Line="1" Column="1" />
-      <File FileName="Assets\Script\PC_Animator.cs" Line="22" Column="5" />
+      <File FileName="Assets\Script\PC_Animator.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\NPC_AI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Script\Treasure.cs" Line="28" Column="38" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

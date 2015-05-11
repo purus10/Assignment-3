@@ -16,16 +16,16 @@ public class Treasure : MonoBehaviour {
 	{
 		loot = new Item[4];
 		for (int i = 0; i < loot.Length;i++) loot[i] = new Item();
-		loot[0].name = "Yo Mama";
-		loot[1].name = "is so fat";
-		loot[2].name = "these items";
-		loot[3].name = "cant contain her";
+		loot[0].name = "Potion";
+		loot[1].name = "High Potion";
+		loot[2].name = "Roasted Chicken";
+		loot[3].name = "Bengay";
 	}
 	
 	void OnTriggerEnter (Collider col) 
 	{
 		p = col.GetComponent<PC_Main>();
-		if (p != null)
+		if (p != null && p.items[0] == null)
 			if (choice == 0) choice = 1;
 	}
 	

@@ -11,6 +11,7 @@ public class PC_Main : MonoBehaviour {
 	//number lerps for damage
 	public static float Bar_max;
 	public static int Ticket;
+	public static bool sent;
 	public string Name;
 	public string[] FrogeNames;
 	public int ID, HP, Str, Dex, Int, Agi, Luk, Exp, Target_type, cur_hp, damage, hit, index;
@@ -29,6 +30,7 @@ public class PC_Main : MonoBehaviour {
 	public NPC_Main NPC;
 	public PC_Main PC;
 	Color target_off;
+	int t;
 	public int Level
 	{
 		get {return Exp/200;}
@@ -50,6 +52,21 @@ public class PC_Main : MonoBehaviour {
 	}
 	void Update()
 	{
+		if (sent == false) 
+		{
+			transform.position = MapTransition.placement;
+			sent = true;
+		}
+		if (Ticket != 0)
+		{
+			t++;
+			if ( t > 30 && Application.loadedLevelName != "Inn Test")
+			{
+				Ticket_Dispenser.nowserving_number++;
+				t = 0;
+			}
+			if (ID == 1 && Ticket_Dispenser.nowserving_number == Ticket) Ticket_Dispenser.Beep (this);
+		}
 		SetAttack();
 		NPCMotions();
 		transform.rotation = new Quaternion(0,transform.rotation.y,0,0);
@@ -65,9 +82,11 @@ public class PC_Main : MonoBehaviour {
 	{
 		if (GameInformer.stop == false)
 		{
+			if (Input.GetKey(GameInformer.Left)) transform.rotation = new Quaternion(transform.rotation.x,180,transform.rotation.z,0);
+			if (Input.GetKey(GameInformer.Right)) transform.rotation = new Quaternion(transform.rotation.x,0,transform.rotation.z,0);
 			if (GameInformer.target == transform)
 			{
-				if (Application.loadedLevelName == "Feature Test")
+				if (Application.loadedLevelName != "Battle")
 				{
 				Agent.Stop();
 					if (Input.GetKey(GameInformer.Up))
@@ -76,16 +95,8 @@ public class PC_Main : MonoBehaviour {
 						else transform.Translate(Vector3.forward * Speed * Time.deltaTime);
 					}
 
-				if (Input.GetKey(GameInformer.Left)) 
-					{
-						transform.Translate(-Vector3.left * Speed * Time.deltaTime);
-						transform.rotation = new Quaternion(transform.rotation.x,180,transform.rotation.z,0);
-					}
-				if (Input.GetKey(GameInformer.Right)) 
-					{
-						transform.Translate(-Vector3.left * Speed * Time.deltaTime);
-						transform.rotation = new Quaternion(transform.rotation.x,0,transform.rotation.z,0);
-					}
+				if (Input.GetKey(GameInformer.Left)) transform.Translate(-Vector3.left * Speed * Time.deltaTime);
+				if (Input.GetKey(GameInformer.Right)) transform.Translate(-Vector3.left * Speed * Time.deltaTime);
 				if (Input.GetKey(GameInformer.Down))
 					{
 						if (transform.rotation.y > 0) transform.Translate(Vector3.forward * Speed * Time.deltaTime);
@@ -299,6 +310,7 @@ public class PC_Main : MonoBehaviour {
 	
 	public void Target()
 	{
+		targets.Clear();
 		if (Target_type == 1) 
 		{
 			NPC_Main[] search = GameObject.FindObjectsOfType(typeof(NPC_Main)) as NPC_Main[];

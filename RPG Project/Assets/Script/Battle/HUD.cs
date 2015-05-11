@@ -42,6 +42,7 @@ public class HUD : MonoBehaviour {
 	// Update is called once per frame
 	void OnGUI () 
 	{
+		GUI.Label(info_box,info);
 		if (character.Myturn)
 		{
 			GUI.Box(box,"");
@@ -55,7 +56,6 @@ public class HUD : MonoBehaviour {
 			if (character.target == null) GUI.Label(helpfuls[1],"Current Target:");
 			else GUI.Label(helpfuls[1],"Current Target: "+character.target.ToString());
 			GUI.Label(helpfuls[3],character.name);
-			GUI.Label(info_box,info);
 		}
 	}
 	

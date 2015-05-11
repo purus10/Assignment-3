@@ -11,7 +11,11 @@ public class MapTransition : MonoBehaviour {
 	{
 		PC_Main p = col.GetComponent<PC_Main>();
 
-		if (p != null) Application.LoadLevel(Level_Name);
+		if (p != null) {
+			placement = Trans_Place;
+			PC_Main.sent = false;
+			if (placement == Trans_Place) Application.LoadLevel(Level_Name);
+		}
 	}
 
 

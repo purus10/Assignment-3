@@ -16,9 +16,8 @@ public class GameInformer : MonoBehaviour {
 	void Awake()
 	{
 		UnityEngine.Cursor.visible = false;
-		if (target == null) CreateCharacter();
-		else TransferPlace();
 		previous = Application.loadedLevelName;
+		if (target == null) CreateCharacter();
 		Up = KeyCode.W;
 		Down = KeyCode.S;
 		Left = KeyCode.A;
@@ -38,11 +37,6 @@ public class GameInformer : MonoBehaviour {
 	{
 		for(int i = 0; i < Character.Length;i++)
 			Instantiate (Character[i], position[i],Rotation[i]);
-	}
-
-	void TransferPlace()
-	{
-		Character[0].transform.position = MapTransition.placement;
 	}
 
 	void FixedUpdate()
